@@ -5,7 +5,7 @@ This backend provides a RESTful API for creating, viewing, editing, deleting, an
 
 - Base URL: http://localhost:3001
 - Health check: GET /health → OK
-- Welcome: GET / → Hello, Spring Boot! Welcome to notesappbackend
+- Root: GET / → Redirects to /docs (Swagger UI)
 
 ## Quick Start
 - Run the Spring Boot app (Gradle): ./gradlew bootRun

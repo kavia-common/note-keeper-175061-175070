@@ -15,17 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @Tag(name = "Hello Controller", description = "Basic endpoints for notesappbackend")
 public class HelloController {
 
-    /**
-     * PUBLIC_INTERFACE
-     * Root endpoint returns a welcome message.
-     *
-     * @return welcome message
-     */
-    @GetMapping("/")
-    @Operation(summary = "Welcome endpoint", description = "Returns a welcome message")
-    public String hello() {
-        return "Hello, Spring Boot! Welcome to notesappbackend";
-    }
+    // Note: Root ("/") is handled by RootController to redirect to /docs.
 
     /**
      * PUBLIC_INTERFACE
