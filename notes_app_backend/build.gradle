@@ -26,9 +26,19 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.hibernate.validator:hibernate-validator'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
-    // DevTools is scoped to developmentOnly to prevent it from being active in production/CI runtime.
-    // Restarts and property augmentation are explicitly disabled in application.properties for fast startup.
+
+    // DevTools strictly for development; not included on runtimeClasspath to avoid restarts/LR in CI/prod
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    configurations {
+        developmentOnly {
+            // ensure devtools is NOT leaked onto runtime classpath
+            extendsFrom = []
+        }
+        runtimeClasspath {
+            exclude group: 'org.springframework.boot', module: 'spring-boot-devtools'
+        }
+    }
+
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
