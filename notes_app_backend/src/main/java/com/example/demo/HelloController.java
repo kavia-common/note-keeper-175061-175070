@@ -7,7 +7,7 @@ import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
-import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @Tag(name = "Hello Controller", description = "Basic endpoints for notesappbackend")
@@ -23,8 +23,8 @@ public class HelloController {
     @Operation(summary = "API Documentation", description = "Redirects to Swagger UI preserving original scheme/host/port")
     public RedirectView docs(HttpServletRequest request) {
         // Build an absolute URL based on the incoming request, honoring X-Forwarded-* headers
-        String target = UriComponentsBuilder
-                .fromHttpRequest(new ServletServerHttpRequest(request))
+        String target = ServletUriComponentsBuilder
+                .fromRequest(request)
                 .replacePath("/swagger-ui.html")
                 .replaceQuery(null)
                 .build()

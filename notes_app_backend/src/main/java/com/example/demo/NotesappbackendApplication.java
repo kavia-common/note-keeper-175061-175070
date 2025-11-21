@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class notesappbackendApplication {
+public class NotesappbackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(notesappbackendApplication.class, args);
+		SpringApplication.run(NotesappbackendApplication.class, args);
 	}
 
 }
